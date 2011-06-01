@@ -18,3 +18,5 @@ If you want to modify it and build it yourself:
 
   * Install CoffeeScript http://jashkenas.github.com/coffee-script/
   * Run build.sh
+  
+Note: You don't need to build it to use it, just copy the existing contents.
