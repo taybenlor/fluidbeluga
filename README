@@ -1,6 +1,6 @@
 This is a bunch of user styles and scripts to improve beluga integration using fluid.
 
-== Instructions
+== Basic Instructions
 
   1. Copy the content of style.css into your userstyles
   2. Copy the content of dist.js into your userscripts
@@ -13,6 +13,8 @@ This is a bunch of user styles and scripts to improve beluga integration using f
   * Notification count in dock
 
 == Build Instructions
+
+If you want to modify it and build it yourself:
 
   * Install CoffeeScript http://jashkenas.github.com/coffee-script/
   * Run build.sh
