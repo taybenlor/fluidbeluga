@@ -1,8 +1,10 @@
 This is a bunch of user styles and scripts to improve beluga integration using fluid.
 
 == Basic Instructions
+  
   1. Purchase FluidApp http://fluidapp.com
   2. Install Beluga as a fluidapp using http://belugapods.com/site/mobile as the address
+  3. Use the icon included here (beluga.appl.icns)
   3. Copy the content of style.css into your userstyles
   4. Copy the content of dist.js into your userscripts
   
