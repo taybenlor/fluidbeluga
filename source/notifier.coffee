@@ -21,7 +21,11 @@ class window.Notification
     window.fluid.showGrowlNotification({
         title: "#{@name} said", 
         description: @text,
-        icon: @avatar
-    })
+        icon: @avatar,
+        onclick: @focusWindow
+    });
+    
+  focusWindow: =>
+    window.fluid.activate()
     
 window.notifier = new Notifier()

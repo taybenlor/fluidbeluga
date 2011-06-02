@@ -22,10 +22,14 @@
     return (lines * lh) + 'px';
   };
   $(function() {
-    var $composebutton, $composetext, doStuff, keys_down;
+    var $compose, $composebutton, $composetext, $header, $updates, $window, doStuff, keys_down, resize;
     keys_down = {};
     $composetext = $("#composetext");
     $composebutton = $("#composebutton");
+    $updates = $("#updates");
+    $header = $(".pod-header");
+    $compose = $("#compose");
+    $window = $(window);
     $composetext.bind("keyup", function() {
       return $composetext.css('height', sizeTextArea($composetext));
     });
@@ -43,12 +47,20 @@
     $composetext.bind("keyup", function(event) {
       return keys_down[event.keyCode] = false;
     });
-    $(window).focus(function() {
+    $window.focus(function() {
       return window.hasFocus = true;
     });
-    return $(window).blur(function() {
+    $window.blur(function() {
       return window.hasFocus = false;
     });
+    resize = function() {
+      return $updates.height($window.height() - ($compose.height() + $header.height() + 16));
+    };
+    $window.resize(resize);
+    $header.resize(resize);
+    $compose.resize(resize);
+    $compose.click(resize);
+    return resize();
   });
   window.Notifier = (function() {
     function Notifier() {
@@ -76,14 +88,19 @@
       this.uid = uid;
       this.name = name;
       this.text = text;
+      this.focusWindow = __bind(this.focusWindow, this);;
       this.user = p_users["u" + this.uid];
       this.avatar = "http://belugapods.com/userimg/100/" + this.uid + "/" + this.user.ihash;
       window.fluid.showGrowlNotification({
         title: "" + this.name + " said",
         description: this.text,
-        icon: this.avatar
+        icon: this.avatar,
+        onclick: this.focusWindow
       });
     }
+    Notification.prototype.focusWindow = function() {
+      return window.fluid.activate();
+    };
     return Notification;
   })();
   window.notifier = new Notifier();

@@ -18,17 +18,21 @@ sizeTextArea = (textarea) ->
 
 
 $ ->
-  keys_down={};
-  $composetext = $("#composetext");
-  $composebutton = $("#composebutton");  
+  keys_down={}
+  $composetext = $("#composetext")
+  $composebutton = $("#composebutton") 
+  $updates = $("#updates")
+  $header = $(".pod-header")
+  $compose = $("#compose")
+  $window = $(window)
   
   $composetext.bind("keyup", -> $composetext.css('height', sizeTextArea($composetext)))
 
   doStuff = ()->
     if keys_down[13] and keys_down[91] 
-      $composebutton.click();
-      $composetext.focus();
-      keys_down[13] = false;
+      $composebutton.click()
+      $composetext.focus()
+      keys_down[13] = false
   
   $composetext.bind("keydown", (event)->
     keys_down[event.keyCode] = true
@@ -36,8 +40,17 @@ $ ->
   )
   
   $composetext.bind("keyup", (event)->
-    keys_down[event.keyCode] = false;
+    keys_down[event.keyCode] = false
   )
 
-  $(window).focus(-> window.hasFocus = true)
-  $(window).blur(-> window.hasFocus = false)
+  $window.focus(-> window.hasFocus = true)
+  $window.blur(-> window.hasFocus = false)
+  
+  
+  resize = -> $updates.height($window.height() - ($compose.height() + $header.height() + 16)) #fudge
+  $window.resize(resize)
+  $header.resize(resize)
+  $compose.resize(resize)
+  $compose.click(resize)
+  resize()
+  
