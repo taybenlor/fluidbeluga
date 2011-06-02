@@ -3,6 +3,9 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
+  
+  /* #header, .pod-header {display: none !important;) */ /* Uncomment if you want to hide the entire header */
+
 #composetext {
 	background-color: #fafafa !important;
 	border: 1px solid #cccccc !important;
@@ -41,7 +44,7 @@ body div.pod-header h1 {
 	position: absolute !important;
 	top: 16px !important;
 	margin: 0 !important;
-	left: 35%;
+	width: 100% !important;
 }
 
 .pod-header-links {
